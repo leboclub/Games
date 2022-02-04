@@ -5,3 +5,4 @@
 > 网站：https://www.wisebo.com
 
 1. 贪吃蛇
+2. 飞机大战
