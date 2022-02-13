@@ -1,6 +1,8 @@
 import pygame
 
+
 class EnemyBullet(pygame.sprite.Sprite):
+
     def __init__(self, pos, x_speed):
         super().__init__()
 

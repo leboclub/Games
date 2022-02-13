@@ -5,6 +5,7 @@ from random import choice, randint
 
 
 class MediumEnemy(pygame.sprite.Sprite):
+
     def __init__(self, buller_group, prop_group):
         super().__init__()
 
@@ -34,28 +35,28 @@ class MediumEnemy(pygame.sprite.Sprite):
         self.rect.bottomleft = randint(0, 480 - self.image.get_width()), 0
 
         # 初始化速度
-        self.x_speed        = 0
-        self.y_speed        = randint(1, 2)
+        self.x_speed = 0
+        self.y_speed = randint(1, 2)
 
-        self.downing        = False
-        self.image_idx      = 0
-        self.last_time      = 0
-        self.frame_pre_ms   = 1000 // 10
-        self.status         = 'NORMAL'
+        self.downing = False
+        self.image_idx = 0
+        self.last_time = 0
+        self.frame_pre_ms = 1000 // 10
+        self.status = 'NORMAL'
 
-        self.blood          = 6
-        self.buller_group   = buller_group
-        self.cooldwon       = 0
-        self.directions     = [-3, -2, -1, 0, 1, 2, 3]
-        self.prop_group     = prop_group
-        self.score          = 50
+        self.blood = 6
+        self.buller_group = buller_group
+        self.cooldwon = 0
+        self.directions = [-3, -2, -1, 0, 1, 2, 3]
+        self.prop_group = prop_group
+        self.score = 50
 
     def down(self):
         self.down_sound.play()
         self.status = 'DOWN'
         if randint(1, 10) == 1:
             Prop(self.rect.center).add(self.prop_group)
-    
+
     def hit(self):
         if self.downing or self.blood == 0:
             return 0
@@ -81,7 +82,7 @@ class MediumEnemy(pygame.sprite.Sprite):
 
         if self.status == 'NORMAL':
             self.image_idx %= 1
-        
+
         elif self.status == 'HIT':
             self.image_idx = 1
             self.status = 'NORMAL'

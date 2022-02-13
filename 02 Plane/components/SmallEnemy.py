@@ -4,6 +4,7 @@ from random import randint
 
 
 class SmallEnemy(pygame.sprite.Sprite):
+
     def __init__(self):
         super().__init__()
 
@@ -32,18 +33,18 @@ class SmallEnemy(pygame.sprite.Sprite):
         self.rect.bottomleft = randint(0, 480 - self.image.get_width()), 0
 
         # 初始化速度
-        self.x_speed        = 0
-        self.y_speed        = randint(1, 2)
+        self.x_speed = 0
+        self.y_speed = randint(1, 2)
 
-        self.downing        = False
-        self.image_idx      = 0
-        self.last_time      = 0
-        self.frame_pre_ms   = 1000 // 10
-        self.status         = 'NORMAL'
+        self.downing = False
+        self.image_idx = 0
+        self.last_time = 0
+        self.frame_pre_ms = 1000 // 10
+        self.status = 'NORMAL'
 
-        self.blood          = 1
-        self.cooldwon       = 0
-        self.score          = 10
+        self.blood = 1
+        self.cooldwon = 0
+        self.score = 10
 
     def down(self):
         self.down_sound.play()
@@ -71,7 +72,7 @@ class SmallEnemy(pygame.sprite.Sprite):
 
         if self.status == 'NORMAL':
             self.image_idx %= 1
-        
+
         elif self.status == 'HIT':
             self.image_idx = 1
             self.status = 'NORMAL'
@@ -82,7 +83,7 @@ class SmallEnemy(pygame.sprite.Sprite):
                 self.downing = True
 
         if self.image_idx == len(self.images):
-            self.kill() 
+            self.kill()
             return
 
         self.image = self.images[self.image_idx]

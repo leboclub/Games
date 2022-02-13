@@ -1,6 +1,7 @@
 import sys
 import pygame
 
+
 def Button(screen, position, text, cfg):
     btn = pygame.image.load(r'assets/images/button_nor.png')
     btn_p = pygame.image.load(r'assets/images/button_p.png')
@@ -9,7 +10,10 @@ def Button(screen, position, text, cfg):
     image.blit(btn, (0, 0))
     return screen.blit(image, (left + 50, top + 10))
 
+
 '''开始界面'''
+
+
 def StartInterface(screen, cfg):
     clock = pygame.time.Clock()
     while True:
@@ -29,6 +33,8 @@ def StartInterface(screen, cfg):
 
 
 '''结束界面'''
+
+
 def EndInterface(screen, cfg):
     clock = pygame.time.Clock()
     while True:

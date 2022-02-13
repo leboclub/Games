@@ -1,7 +1,9 @@
 import pygame
 from components.HeroBullet import *
 
+
 class Hero(pygame.sprite.Sprite):
+
     def __init__(self, bullet_group):
         super().__init__()
 
@@ -16,15 +18,16 @@ class Hero(pygame.sprite.Sprite):
         ]
         for path in paths:
             image = pygame.image.load(path)
-            image = pygame.transform.scale(image, (image.get_width() // 2, image.get_height() // 2))
+            image = pygame.transform.scale(
+                image, (image.get_width() // 2, image.get_height() // 2))
             self.images.append(image)
 
         self.image_idx = 0
         self.image = self.images[self.image_idx]
 
         self.rect = self.image.get_rect()
-        self.rect.center = 480 // 2 , 700
-        
+        self.rect.center = 480 // 2, 700
+
         self.last_time = 0
         self.frame_pre_ms = 1000 / 15
 
@@ -68,7 +71,7 @@ class Hero(pygame.sprite.Sprite):
             if not self.downing:
                 self.downing = True
                 self.image_idx = 2
-        
+
         if self.image_idx == len(self.images):
             return
 
@@ -85,7 +88,8 @@ class Hero(pygame.sprite.Sprite):
             if self.firepower > 0:
                 self.firepower -= 2
                 for i in range(2):
-                    HeroBullet((self.rect.centerx - 16 + i * 32,
-                               self.rect.centery), 'laser').add(self.bullet_group)
+                    HeroBullet(
+                        (self.rect.centerx - 16 + i * 32, self.rect.centery),
+                        'laser').add(self.bullet_group)
             else:
                 HeroBullet(self.rect.center).add(self.bullet_group)

@@ -3,6 +3,7 @@ from components.EnemyBullet import *
 
 
 class LargeEnemy(pygame.sprite.Sprite):
+
     def __init__(self, bullet_group):
         super().__init__()
 
@@ -36,20 +37,20 @@ class LargeEnemy(pygame.sprite.Sprite):
         self.rect.centerx, self.rect.bottom = 240, 0
 
         # 初始化速度
-        self.x_speed        = 3
-        self.y_speed        = 1
+        self.x_speed = 3
+        self.y_speed = 1
 
-        self.downing        = False
-        self.image_idx      = 0
-        self.last_time      = 0
-        self.frame_pre_ms   = 1000 // 10
-        self.status         = 'NORMAL'
+        self.downing = False
+        self.image_idx = 0
+        self.last_time = 0
+        self.frame_pre_ms = 1000 // 10
+        self.status = 'NORMAL'
 
-        self.blood          = 500
-        self.bullet_group   = bullet_group
-        self.cooldwon       = 0
-        self.directions     = [-3, -2, -1, 0, 1, 2, 3]
-        self.score          = 500
+        self.blood = 500
+        self.bullet_group = bullet_group
+        self.cooldwon = 0
+        self.directions = [-3, -2, -1, 0, 1, 2, 3]
+        self.score = 500
 
     def down(self):
         self.down_sound.play()
@@ -63,7 +64,7 @@ class LargeEnemy(pygame.sprite.Sprite):
         if self.blood == 0:
             self.down()
             return self.score
-        
+
         return 0
 
     def update(self, current_time):
@@ -86,7 +87,7 @@ class LargeEnemy(pygame.sprite.Sprite):
 
         if self.status == 'NORMAL':
             self.image_idx %= 2
-        
+
         elif self.status == 'HIT':
             self.image_idx = 2
             self.status = 'NORMAL'
@@ -98,7 +99,7 @@ class LargeEnemy(pygame.sprite.Sprite):
 
         # 如果超过图片索引就自毁
         if self.rect.top >= 800 or self.image_idx == len(self.images):
-            self.kill() 
+            self.kill()
             return
 
         self.image = self.images[self.image_idx]
